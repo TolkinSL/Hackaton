@@ -10,11 +10,13 @@ const myArr = [sq1, sq2, sq3, sq4, sq5, sq6, sq7];
 const myTemp = [];
 
 const delEl = () => {
+  let time = 500;
   for (let i = 0; i < myTemp.length; i += 1){
     const elD = myTemp[i];
     setTimeout(() => {
       elD.classList.remove('square_on');
-    }, 1000);
+    }, time);
+    time += 500;
   }
   myTemp.length = 0;
 }
