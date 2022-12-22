@@ -8,13 +8,20 @@ const sq7 = document.querySelector('.square-7');
 
 const myArr = [sq1, sq2, sq3, sq4, sq5, sq6, sq7];
 const myTemp = [];
+let isActive = true;
 
 const delEl = () => {
   let time = 500;
-  for (let i = 0; i < myTemp.length; i += 1){
+  isActive = false;
+  const count = myTemp.length - 1;
+
+  for (let i = 0; i <= count; i += 1){
     const elD = myTemp[i];
     setTimeout(() => {
       elD.classList.remove('square_on');
+      if (i === count) {
+        isActive = true;
+      }
     }, time);
     time += 500;
   }
@@ -22,7 +29,7 @@ const delEl = () => {
 }
 const myClick = (el) => {
   el.addEventListener('click', function() {
-    if (!myTemp.includes(el)) {
+    if (isActive && !myTemp.includes(el)) {
       myTemp.push(el);
       el.classList.add('square_on');
       if (myTemp.length === 7) {
